@@ -8,8 +8,8 @@ function SignInForm() {
         password: ''
     })
     
-    // const url = `https://uxcandy.com/~shapoval/test-task-backend/v2/login?developer=Michael`
-    const url = '/'
+    const url = `https://uxcandy.com/~shapoval/test-task-backend/v2/login?developer=Michael`
+    // const url = '/'
 
     const headers = {
         'Content-Type': 'multipart/form-data'
