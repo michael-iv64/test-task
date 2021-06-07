@@ -1,0 +1,64 @@
+.paginationButton {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(243, 243, 245);
+    color: rgb(131, 129, 230);
+    border:gainsboro;
+    font-size: 20px;
+}
+
+
+button:focus{
+    background-color: rgb(23, 78, 197);
+    color: aliceblue;
+}
+button:hover{
+    background-color: rgb(220, 225, 240);
+    color: rgb(131, 129, 230);
+
+}
+
+.left{
+    float: left;
+    margin: 10px;
+}
+.sort{
+    float: right;
+    text-align: left;
+    max-height: 30px;
+    min-width: 150px;
+    overflow: hidden;
+    transition: all 0.5s ease-out;
+    margin: 10px;
+
+}
+.sort:hover{
+    max-height: 150px;
+    transition: all 0.5s ease-out;
+
+}
+.sortText{
+    background-color: rgb(220, 225, 240);
+    color: rgb(131, 129, 230);
+    padding: 2%;
+    margin: 2%;
+    /* text-align: center; */
+    padding-left: 30px;
+
+
+}
+.sortText:hover {
+    background-color: rgb(23, 78, 197);
+    color: aliceblue;
+    cursor: pointer;
+}
+.sortTextTitle {
+    background-color: rgb(23, 78, 197);
+    min-width: 130px;
+    transition: all 0.5s ease-out;
+    color: aliceblue;
+    padding: 2%;
+    margin: 2%;
+    text-align: center;
+}
