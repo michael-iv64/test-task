@@ -43,10 +43,14 @@ function AdminForm({task}) {
         e.preventDefault();
         axios.post(url,formData, {headers : headers})
             .then(res => {
-            console.log(res.data)
+                console.log(res.data)
+                console.log('error.length', res.data.status.length)
+                if (res.data.status.length === 5) {
+                    return dispatch(showAlert(res.data.message.token))
+                }
+                return dispatch(showAlert('Задача успешно изменена!'))
             })
-            return dispatch(showAlert('Задача успешно изменена!'))
-        
+            // return dispatch(showAlert('Задача успешно изменена!'))
     }
 
     function handle(e) {
