@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios'
 // import styles from './PostForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTokenAction } from '../redux/actions/auth';
+
 
 function SignInForm() {
+    const dispatch = useDispatch()
     const [data, setData] = useState({
         username: '',
         password: ''
@@ -24,7 +28,9 @@ function SignInForm() {
         e.preventDefault();
         axios.post(url,formData, {headers : headers})
             .then(res => {
-            console.log(res.data)
+
+                console.log(res.data)
+                return dispatch(getTokenAction(res.data.message.token))
         })
     }
 

@@ -11,3 +11,5 @@ export const HIDE_ALERT = 'APP/HIDE_ALERT';
 
 export const TASKS_FETCH_DATA_SUCCESS = 'TASKS_FETCH_DATA_SUCCESS';
 export const NEXT_PAGE = 'NEXT_PAGE';
+
+export const GET_TOKEN = 'AUTH/GET_TOKEN';

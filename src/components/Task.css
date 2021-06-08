@@ -16,3 +16,11 @@
     margin-right: 0%; */
 
 }
+
+.logoutButton {
+    position: absolute;
+    right: 20px;
+    top:10px;
+    height: 40px;
+    width: 150px;
+}

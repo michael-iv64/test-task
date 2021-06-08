@@ -16,11 +16,13 @@ function AdminForm({task}) {
         email: task.email,
         text: task.text,
         status: task.status,
-        token: "RFNkSGlDZHVycVNrM3pxMjdyVEo4VzRtVWZCZkcrbzZ5anFLTFVNZ0JOQmROczZkWUUrQ04rM0c3QVVDZUdqM01uUjIvRXN5dlRJaEEyVGRYR09Tdmc9PQ=="
+        // token: "RFNkSGlDZHVycVNrM3pxMjdyVEo4VzRtVWZCZkcrbzZ5anFLTFVNZ0JOQmROczZkWUUrQ04rM0c3QVVDZUdqM01uUjIvRXN5dlRJaEEyVGRYR09Tdmc9PQ=="
     })
 
     const dispatch = useDispatch()
     const alert = useSelector(state => state.app.alert)
+    const token = useSelector(state => state.auth.token)
+    console.log('token ',token)
 
     
     const url = `https://uxcandy.com/~shapoval/test-task-backend/v2/edit/${task.id}?developer=Michael`
@@ -28,7 +30,6 @@ function AdminForm({task}) {
 
     const headers = {
         'Content-Type': 'multipart/form-data'
-
     }
     
     let formData = new FormData()
@@ -37,7 +38,7 @@ function AdminForm({task}) {
     formData.append('email', data.email)
     formData.append('text', data.text)
     formData.append('status', data.status)
-    formData.append('token', data.token)
+    formData.append('token', token)
       
     function submit(e) {
         e.preventDefault();
@@ -45,6 +46,9 @@ function AdminForm({task}) {
             .then(res => {
                 console.log(res.data)
                 console.log('error.length', res.data.status.length)
+                console.log('old token',localStorage.getItem('token'))
+                localStorage.setItem('token', '1')
+                console.log('new token',localStorage.getItem('token'))
                 if (res.data.status.length === 5) {
                     return dispatch(showAlert(res.data.message.token))
                 }
