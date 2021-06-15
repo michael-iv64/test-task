@@ -4,6 +4,9 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { getTokenAction } from '../redux/actions/auth';
 
+import { showAlert } from '../redux/actions/actions';
+import { Alert } from '../components/Alert';
+
 
 function SignInForm() {
     const dispatch = useDispatch()
@@ -11,6 +14,8 @@ function SignInForm() {
         username: '',
         password: ''
     })
+    const alert = useSelector(state => state.app.alert)
+
     
     const url = `https://uxcandy.com/~shapoval/test-task-backend/v2/login?developer=Michael`
     // const url = '/'
@@ -30,7 +35,10 @@ function SignInForm() {
             .then(res => {
 
                 console.log(res.data)
-                return dispatch(getTokenAction(res.data.message.token))
+                if (res.data.status.length === 2) {
+                    return dispatch(getTokenAction(res.data.message.token))
+                }
+        else  return dispatch(showAlert('Неправильное имя пользователя или пароль!'))
         })
     }
 
@@ -43,6 +51,8 @@ function SignInForm() {
     return (
         <div className="w-50 container pt-3">
             <form onSubmit={(e) => submit(e)}>
+            {alert && <Alert text={alert} />}
+
                 <div className='form-group'>
                 <label htmlFor="title"><h4>Войти в систему</h4></label>
 
